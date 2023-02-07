@@ -54,7 +54,7 @@ $ayarcek=$ayarsor->fetch(PDO::FETCH_ASSOC);
                 <i class="bi bi-clock flex-shrink-0"></i>
                 <div>
                   <h4>Open Hours:</h4>
-                  <p>Mon-Sat: 11AM - 23PM</p>
+                  <p><?php echo $ayarcek['ayar_time'] ?></p>
                 </div>
               </div><!-- End Info Item -->
             </div>

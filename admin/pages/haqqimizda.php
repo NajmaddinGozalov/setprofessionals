@@ -53,22 +53,23 @@ $haqqimizdacek=$haqqimizdasor->fetch(PDO::FETCH_ASSOC);
 
 
 
-             <form action="../netting/islem.php" method="POST" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+              <form action="../netting/islem.php" method="POST" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
                         <div class="col-lg-12">
 
-                            <div class="form-group">
-                             <label>Haqqimizda</label>
-                             
-                               <input type="text" id="first-name" name="haqqimizda_muvzu"  value="<?php echo $haqqimizdacek['haqqimizda_muvzu']; ?>" class="form-control col-md-7 col-xs-12">
-                             
+                           <div class="col-lg-4">
+                             <label>Haqqimizda Basliq</label>
+                             <input type="text" name="haqqimizda_basliq" value="<?php echo $haqqimizdacek['haqqimizda_basliq'] ?>" class="form-control">
                             </div>
-                           
+                            <div class="col-lg-4">
+                             <label>Haqqimizda Movzu</label>
+                             <textarea class="form-control" name="haqqimizda_muvzu" rows="7" placeholder="Message" required><?php echo $haqqimizdacek['haqqimizda_muvzu'] ?></textarea>
+                            </div>
+         
                             <div class="col-lg-12 mt-2">
                                 <button type="submit" name="haqqimizdaguncelle" class="btn btn-primary btn-block btn-social btn-dropbox"><i class="fa fa-edit"></i>Güncelle</button>
                                
                             </div>
-
-
+       
                         </div>
                         </form>
              

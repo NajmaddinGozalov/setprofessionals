@@ -14,9 +14,22 @@ include ('header.php');
                     <div class="row">
                       <form action="../netting/islem.php" method="POST" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
                         <div class="col-lg-12">
+
+                           <div class="col-lg-4">
+                             <label>Site Basliq</label>
+                             <input type="text" name="ayar_title" value="<?php echo $ayarcek['ayar_title'] ?>" class="form-control">
+                            </div>
+                            <div class="col-lg-4">
+                             <label>Connect Basliq</label>
+                             <input type="text" name="ayar_connect_title" value="<?php echo $ayarcek['ayar_connect_title'] ?>" class="form-control">
+                            </div>
                             <div class="col-lg-4">
                              <label>Phone number</label>
                              <input type="text" name="ayar_tel" value="<?php echo $ayarcek['ayar_tel'] ?>" class="form-control">
+                            </div>
+                            <div class="col-lg-4">
+                             <label>Is saati</label>
+                             <input type="text" name="ayar_time" value="<?php echo $ayarcek['ayar_time'] ?>" class="form-control">
                             </div>
                             <div class="col-lg-4">
                              <label>Location</label>

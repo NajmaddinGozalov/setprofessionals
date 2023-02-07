@@ -50,7 +50,7 @@ $postsor->execute();
                                                 <td><?php echo $postcek['post_title'] ?></td>
                                                 <td><?php echo $postcek['post_metin'] ?></td>
                                                 <td><?php echo $postcek['post_status'] ?></td>
-                                                <td><center><a href="../netting/islem.php?post_id=<?php echo $postcek['post_id']; ?>&postsil=ok"><button  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a></center></td>
+                                                <td><center><a  href="../netting/islem.php?post_id=<?php echo $postcek['post_id']; ?>&postsil=ok"><button  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a></center></td>
                                             </tr>
                                          <?php } ?>
                                         </tbody>

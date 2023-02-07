@@ -60,9 +60,9 @@ include ('section.php');
    <?php 
 include ('about.php');
 
-include ('client.php');
+include ('partnyorlar.php');
 
-include ('countr.php');
+
     ?>
 
    

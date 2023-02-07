@@ -105,6 +105,16 @@ $ayarcek=$ayarsor->fetch(PDO::FETCH_ASSOC);
                             <a href="../pages/yorumlar.php"><i class="fa fa-wrench fa-fw"></i> Yorumlar
                             </a>
                         </li>
+
+                        <li>
+                            <a href="../pages/testimonials.php"><i class="fa fa-wrench fa-fw"></i> Testimonials
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="../pages/servic.php"><i class="fa fa-wrench fa-fw"></i> Servic
+                            </a>
+                        </li>
                        
     
                     </ul>

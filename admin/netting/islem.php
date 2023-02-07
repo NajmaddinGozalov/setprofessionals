@@ -73,23 +73,29 @@ if (isset($_POST['kullaniciduzenle'])) {
  if (isset($_POST['connectguncel'])) {
 	
 	$ayarkaydet=$db->prepare("UPDATE ayar SET
+		ayar_title=:ayar_title,
+		ayar_connect_title=:ayar_connect_title,
 		ayar_tel=:ayar_tel,
 		ayar_maps=:ayar_maps,
 		ayar_facebook=:ayar_facebook,
 		ayar_instagram=:ayar_instagram,
 		ayar_twitter=:ayar_twitter,
 		ayar_linkedin=:ayar_linkedin,
+		ayar_time=:ayar_time,
 		ayar_mail=:ayar_mail	
 		
 		WHERE ayar_id=1");
 
 	$update=$ayarkaydet->execute(array(
+		'ayar_title' => $_POST['ayar_title'],
+		'ayar_connect_title' => $_POST['ayar_connect_title'],
 		'ayar_tel' => $_POST['ayar_tel'],
 		'ayar_maps' => $_POST['ayar_maps'],
 		'ayar_facebook' => $_POST['ayar_facebook'],
 		'ayar_instagram' => $_POST['ayar_instagram'],
 		'ayar_twitter' => $_POST['ayar_twitter'],
 		'ayar_linkedin' => $_POST['ayar_linkedin'],
+		'ayar_time' => $_POST['ayar_time'],
 		'ayar_mail' => $_POST['ayar_mail']
 		
 		));
@@ -212,6 +218,7 @@ if (isset($_POST['partcreat'])) {
 
 
 	if ($kontrol) {
+
 
 			Header("Location:../pages/partnyorlar.php?durum=ok");
 
@@ -354,11 +361,13 @@ if (isset($_POST['haqqimizdaguncelle'])) {
 	
 	$haqqimizdakaydet=$db->prepare("UPDATE haqqimizda SET
 		
+		haqqimizda_basliq=:haqqimizda_basliq,
 		haqqimizda_muvzu=:haqqimizda_muvzu	
 		
 		WHERE haqqimizda_id =2");
 
 	$update=$haqqimizdakaydet->execute(array(
+		'haqqimizda_basliq' => $_POST['haqqimizda_basliq'],
 		'haqqimizda_muvzu' => $_POST['haqqimizda_muvzu']
 		
 		));
@@ -475,5 +484,120 @@ if (isset($_POST['sendmessage'])) {
 
 	}
 
+	
+
+if (isset($_POST['serviccreat'])) {
+
+
+	$servicekle=$db->prepare("INSERT INTO servic SET
+
+		servic_basliq=:servic_basliq,
+		servic_movzu=:servic_movzu
+		");
+
+	$insert=$servicekle->execute(array(
+		
+		'servic_basliq' => $_POST['servic_basliq'],
+		'servic_movzu' => $_POST['servic_movzu']
+		));
+
+
+	if ($insert) {
+
+		Header("Location:../pages/servic.php?durum=ok");
+
+	} else {
+
+		Header("Location:../pages/servic.php?durum=ok");
+	} 
+
+	
+
+}
+
+
+if  ($_GET['servicsil']=="ok") {
+
+	$sil=$db->prepare("DELETE from servic where servic_id=:id");
+	$kontrol=$sil->execute(array(
+		'id' => $_GET['servic_id']
+		));
+
+
+	if ($kontrol) {
+
+			Header("Location:../pages/servic.php?durum=ok");
+
+		} else {
+
+			Header("Location:../pages/servic.php?durum=no");
+		}
+
+
+}
+
+
+if (isset($_POST['testcreat'])) {
+
+	$uploads_dir = '../../dimg/testimonials';
+	@$tmp_name = $_FILES['testimonials_file']["tmp_name"];
+	@$name = $_FILES['testimonials_file']["name"];
+	//resmin isminin benzersiz olması
+	$benzersizsayi1=rand(20000,32000);
+	$benzersizsayi2=rand(20000,32000);
+	$benzersizsayi3=rand(20000,32000);
+	$benzersizsayi4=rand(20000,32000);	
+	$benzersizad=$benzersizsayi1.$benzersizsayi2.$benzersizsayi3.$benzersizsayi4;
+	$refimgyol=substr($uploads_dir, 6)."/".$benzersizad.$name;
+	@move_uploaded_file($tmp_name, "$uploads_dir/$benzersizad$name");
+	
+
+		$testekle=$db->prepare("INSERT INTO testimonials SET
+			testimonials_file=:testimonials_file,
+			testimonials_ad=:testimonials_ad,
+			testimonials_rey=:testimonials_rey
+			");
+
+		$insert=$testekle->execute(array(
+			'testimonials_file' => $refimgyol,
+			'testimonials_ad' => $_POST['testimonials_ad'],
+			'testimonials_rey' => $_POST['testimonials_rey']
+			));
+
+
+		if ($insert) {
+
+			Header("Location:../pages/testimonials.php?durum=ok");
+
+		} else {
+
+			Header("Location:../pages/testimonials.php?durum=no");
+		}
+
+		//echo "men burdayam ";
+
+	}
+
+	
+	if  ($_GET['testsil']=="ok") {
+
+		$sil=$db->prepare("DELETE from testimonials where testimonials_id=:id");
+		$kontrol=$sil->execute(array(
+			'id' => $_GET['testimonials_id']
+			));
+	
+	
+		if ($kontrol) {
+	
+	
+				Header("Location:../pages/testimonials.php?durum=ok");
+	
+			} else {
+	
+				Header("Location:../pages/testimonials.php?durum=no");
+			}
+	
+	
+	}
 
 ?>
